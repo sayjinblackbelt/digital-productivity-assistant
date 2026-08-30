@@ -262,6 +262,34 @@ digital-productivity-assistant/
 **Status:** 🟡 Em desenvolvimento  
 **Fase atual:** definição do MVP e estruturação do fluxo conversacional
 
+## 💻 MVP executável
+
+A primeira implementação funcional utiliza uma interface de linha de comando (CLI).
+
+Execute:
+
+\`\`\`bash
+python app/main.py
+\`\`\`
+
+Fluxo atual:
+
+\`\`\`text
+Escolher necessidade
+        ↓
+Criar uma fórmula
+        ↓
+Escolher operação
+        ↓
+Responder perguntas específicas
+        ↓
+Consultar regras
+        ↓
+Exibir recomendações e modelos
+\`\`\`
+
+A primeira implementação é propositalmente simples e utiliza arquivos JSON como base de regras e respostas.
+
 ## 🗺️ Próximos passos
 
 - [ ] Documentar as 5 perguntas iniciais.
