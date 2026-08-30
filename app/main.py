@@ -103,9 +103,14 @@ def run_formula_flow():
     formula = choose_option("Qual solução você deseja gerar?", list(available.keys()))
     if operation == "lookup":
         value = ask("Célula do valor procurado. Ex.: D2", "D2")
-        search_range = ask("Intervalo de busca. Ex.: A:A", "A:A")
-        return_range = ask("Intervalo de retorno. Ex.: B:B", "B:B")
-        result = f'=PROCX({value};{search_range};{return_range};"Não encontrado")'
+        if formula == "PROCV":
+            table_range = ask("Intervalo completo da tabela. Ex.: A:B", "A:B")
+            column_index = ask("Número da coluna de retorno. Ex.: 2", "2")
+            result = f"=PROCV({value};{table_range};{column_index};FALSO)"
+        else:
+            search_range = ask("Intervalo de busca. Ex.: A:A", "A:A")
+            return_range = ask("Intervalo de retorno. Ex.: B:B", "B:B")
+            result = f'=PROCX({value};{search_range};{return_range};"Não encontrado")'
     elif operation == "sum":
         result = f'=SOMASE({ask("Intervalo do critério", "A:A")};"{ask("Critério", "Vendas")}";{ask("Intervalo da soma", "B:B")})'
     elif operation == "count":
