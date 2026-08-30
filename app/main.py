@@ -21,6 +21,25 @@ def choose_option(prompt, options):
 def ask(prompt, default=""):
     return input("\n" + prompt + "\n> ").strip() or default
 
+def run_document_formatting():
+    goal = choose_option("O que você deseja fazer?", ["Formatar um documento existente", "Criar uma estrutura de documento", "Melhorar a apresentação de um documento"])
+    tool = ask("Qual ferramenta você está utilizando?", "Word")
+    print("\nFORMATAÇÃO DE DOCUMENTOS")
+    print("=" * 50)
+    print(f"Ferramenta: {tool}")
+    if goal == "Formatar um documento existente":
+        print("Checklist: título destacado, estilos consistentes, fonte legível, espaçamento uniforme, alinhamento adequado e revisão de quebras de página.")
+    elif goal == "Criar uma estrutura de documento":
+        subject = ask("Qual é o assunto ou objetivo do documento?")
+        print(f"\nEstrutura sugerida para: {subject}")
+        print("1. Título")
+        print("2. Introdução ou objetivo")
+        print("3. Conteúdo principal")
+        print("4. Conclusão ou próximos passos")
+    else:
+        print("Priorize hierarquia visual, títulos consistentes, espaços em branco e listas quando facilitarem a leitura.")
+    print("\nDica: use estilos de título para facilitar a organização e a criação de sumários.")
+
 def run_table_assistant():
     goal = choose_option("O que você deseja fazer?", ["Criar uma nova tabela", "Organizar uma tabela existente", "Preparar dados para análise", "Escolher uma estrutura de tabela"])
     tool = ask("Qual ferramenta você está utilizando?", "Excel")
@@ -198,6 +217,8 @@ def main():
         run_table_assistant()
     elif choice == "Interpretar dados":
         run_data_interpretation()
+    elif choice == "Formatar um documento":
+        run_document_formatting()
     else:
         print("\nEsta categoria está prevista para as próximas versões.")
 
