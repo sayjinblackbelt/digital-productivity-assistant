@@ -260,7 +260,7 @@ digital-productivity-assistant/
 **Origem:** demandas recorrentes de suporte e consultorias personalizadas  
 **Projeto iniciado:** 2026  
 **Status:** 🟡 Em desenvolvimento  
-**Fase atual:** definição do MVP e estruturação do fluxo conversacional
+**Fase atual:** MVP CLI funcional e expansão dos módulos de planilhas
 
 ## 💻 MVP executável
 
@@ -292,13 +292,13 @@ A primeira implementação é propositalmente simples e utiliza arquivos JSON co
 
 ## 🗺️ Próximos passos
 
-- [ ] Documentar as 5 perguntas iniciais.
-- [ ] Criar o fluxo inicial de decisão.
-- [ ] Definir categorias prioritárias.
-- [ ] Criar a primeira base de respostas.
-- [ ] Implementar exemplos de fórmulas.
+- [x] Documentar as perguntas iniciais.
+- [x] Criar o fluxo inicial de decisão.
+- [x] Definir categorias prioritárias.
+- [x] Criar a primeira base de respostas.
+- [x] Implementar geração inicial de fórmulas.
 - [ ] Criar casos de documentos.
-- [ ] Adicionar interpretação básica de dados.
+- [x] Adicionar interpretação básica de dados.
 - [ ] Criar interface inicial.
 - [ ] Testar com usuários.
 - [ ] Evoluir para diálogo baseado em linguagem natural.
