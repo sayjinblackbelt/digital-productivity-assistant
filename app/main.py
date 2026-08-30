@@ -4,8 +4,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
-def load_json(relative_path):
-    with open(BASE_DIR / relative_path, "r", encoding="utf-8") as file:
+def load_json(path):
+    with open(BASE_DIR / path, "r", encoding="utf-8") as file:
         return json.load(file)
 
 def choose_option(prompt, options):
@@ -19,33 +19,46 @@ def choose_option(prompt, options):
         print("Opção inválida. Tente novamente.")
 
 def ask(prompt, default=""):
-    value = input("\n" + prompt + "\n> ").strip()
-    return value or default
+    return input("\n" + prompt + "\n> ").strip() or default
 
-def build_formula(operation, formula):
-    if operation == "lookup":
-        value = ask("Qual célula contém o valor procurado? Ex.: D2", "D2")
-        search_range = ask("Qual intervalo contém os valores de busca? Ex.: A:A", "A:A")
-        return_range = ask("Qual intervalo contém o resultado? Ex.: B:B", "B:B")
-        if formula == "PROCX":
-            return f'=PROCX({value};{search_range};{return_range};"Não encontrado")'
-        table = ask("Qual intervalo completo da tabela? Ex.: A:B", "A:B")
-        column = ask("Qual número da coluna deve ser retornada? Ex.: 2", "2")
-        return f"=PROCV({value};{table};{column};FALSO)"
-    if operation == "sum":
-        cr = ask("Intervalo do critério. Ex.: A:A", "A:A")
-        criterion = ask("Critério. Ex.: Vendas", "Vendas")
-        sr = ask("Intervalo a ser somado. Ex.: B:B", "B:B")
-        return f'=SOMASE({cr};"{criterion}";{sr})'
-    if operation == "count":
-        rng = ask("Intervalo que será contado. Ex.: A:A", "A:A")
-        criterion = ask("Critério. Ex.: Presente", "Presente")
-        return f'=CONT.SE({rng};"{criterion}")'
-    if operation == "condition":
-        condition = ask("Qual condição deve ser testada? Ex.: A2>=7", "A2>=7")
-        true_value = ask("Resultado verdadeiro", "Aprovado")
-        false_value = ask("Resultado falso", "Reprovado")
-        return f'=SE({condition};"{true_value}";"{false_value}")'
+def run_data_interpretation():
+    raw = ask("Informe valores separados por ponto e vírgula. Ex.: 10;15;20")
+    values = []
+    for item in raw.split(";"):
+        try:
+            values.append(float(item.strip().replace(",", ".")))
+        except ValueError:
+            pass
+    if not values:
+        print("Nenhum valor numérico válido foi informado.")
+        return
+    choice = choose_option("O que você deseja descobrir?", ["Maior valor", "Menor valor", "Média", "Comparar primeiro e último valor", "Resumo geral"])
+    maximum = max(values)
+    minimum = min(values)
+    average = sum(values) / len(values)
+    print("\nRESULTADO DA ANÁLISE")
+    print("=" * 50)
+    if choice == "Maior valor":
+        print(f"Maior valor: {maximum:g}")
+    elif choice == "Menor valor":
+        print(f"Menor valor: {minimum:g}")
+    elif choice == "Média":
+        print(f"Média: {average:.2f}")
+    elif choice == "Comparar primeiro e último valor":
+        first, last = values[0], values[-1]
+        change = last - first
+        print(f"Valor inicial: {first:g}")
+        print(f"Valor final: {last:g}")
+        print(f"Variação absoluta: {change:+g}")
+        if first != 0:
+            print(f"Variação percentual: {change / first * 100:+.2f}%")
+        print("Interpretação: aumento." if change > 0 else "Interpretação: redução." if change < 0 else "Interpretação: sem variação.")
+    else:
+        print(f"Quantidade: {len(values)}")
+        print(f"Menor: {minimum:g}")
+        print(f"Maior: {maximum:g}")
+        print(f"Média: {average:.2f}")
+        print("Interpretação: indicadores básicos; o significado depende do contexto.")
 
 def run_formula_correction():
     tool = ask("Qual ferramenta você está utilizando? Ex.: Excel")
@@ -53,27 +66,18 @@ def run_formula_correction():
     error = ask("Qual erro aparece? Ex.: #N/D, #VALOR!, #REF!")
     expected = ask("Qual resultado você esperava obter?")
     suggestions = {
-        "#N/D": "O valor procurado pode não existir no intervalo ou os dados podem ter diferenças de formato, espaços ou tipos.",
-        "#VALOR!": "Verifique se os argumentos da fórmula usam intervalos e tipos de dados compatíveis.",
-        "#REF!": "A fórmula pode apontar para uma célula, coluna ou intervalo removido.",
+        "#N/D": "O valor procurado pode não existir ou os dados podem ter formatos diferentes.",
+        "#VALOR!": "Verifique argumentos e tipos de dados.",
+        "#REF!": "A fórmula pode apontar para uma referência removida.",
         "#DIV/0!": "A fórmula está tentando dividir por zero ou por uma célula vazia."
     }
-    key = error.upper().replace(" ", "")
-    print("\n" + "=" * 50)
-    print("DIAGNÓSTICO INICIAL")
+    print("\nDIAGNÓSTICO INICIAL")
     print("=" * 50)
     print(f"Ferramenta: {tool}")
-    print(f"Erro informado: {error}")
+    print(f"Erro: {error}")
     print(f"Resultado esperado: {expected}")
-    print("\nPossível causa:")
-    print(suggestions.get(key, "Erro não reconhecido pelo diagnóstico inicial. Verifique fórmula, intervalos e dados."))
-    print("\nPróximos passos sugeridos:")
-    print("1. Confirme se os intervalos existem.")
-    print("2. Verifique espaços extras e formatos diferentes nos dados.")
-    print("3. Compare a fórmula com o resultado esperado.")
-    print("4. Teste a fórmula com um exemplo simplificado.")
-    print("\nFórmula informada:")
-    print(formula)
+    print(suggestions.get(error.upper().replace(" ", ""), "Verifique fórmula, intervalos e dados."))
+    print("Fórmula informada:", formula)
 
 def run_formula_flow():
     rules = load_json("decision_engine/decision_rules.json")
@@ -82,18 +86,24 @@ def run_formula_flow():
     options = list(rules["categories"][category]["options"].keys())
     operation_name = choose_option(rules["categories"][category]["question"], options)
     operation = rules["categories"][category]["options"][operation_name]["next"]
-    print("\nVamos entender sua necessidade.")
     for question in rules["flows"][operation]["questions"]:
         ask(question)
     available = responses.get(operation, {})
-    formula_names = list(available.keys())
-    formula = choose_option("Qual solução você deseja gerar?", formula_names)
-    result = build_formula(operation, formula)
-    print("\n" + "=" * 50)
-    print("FÓRMULA PERSONALIZADA")
+    formula = choose_option("Qual solução você deseja gerar?", list(available.keys()))
+    if operation == "lookup":
+        value = ask("Célula do valor procurado. Ex.: D2", "D2")
+        search_range = ask("Intervalo de busca. Ex.: A:A", "A:A")
+        return_range = ask("Intervalo de retorno. Ex.: B:B", "B:B")
+        result = f'=PROCX({value};{search_range};{return_range};"Não encontrado")'
+    elif operation == "sum":
+        result = f'=SOMASE({ask("Intervalo do critério", "A:A")};"{ask("Critério", "Vendas")}";{ask("Intervalo da soma", "B:B")})'
+    elif operation == "count":
+        result = f'=CONT.SE({ask("Intervalo", "A:A")};"{ask("Critério", "Presente")}")'
+    else:
+        result = f'=SE({ask("Condição", "A2>=7")};"{ask("Resultado verdadeiro", "Aprovado")}";"{ask("Resultado falso", "Reprovado")}")'
+    print("\nFÓRMULA PERSONALIZADA")
     print("=" * 50)
     print(result)
-    print("\nExplicação:")
     print(available[formula]["explanation"])
 
 def main():
@@ -107,6 +117,8 @@ def main():
         run_formula_flow()
     elif choice == "Corrigir uma fórmula":
         run_formula_correction()
+    elif choice == "Interpretar dados":
+        run_data_interpretation()
     else:
         print("\nEsta categoria está prevista para as próximas versões.")
 
