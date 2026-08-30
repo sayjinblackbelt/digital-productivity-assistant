@@ -124,7 +124,16 @@ def run_formula_flow():
         else:
             result = f'=SOMASE({ask("Intervalo do critério", "A:A")};"{ask("Critério", "Vendas")}";{ask("Intervalo da soma", "B:B")})'
     elif operation == "count":
-        result = f'=CONT.SE({ask("Intervalo", "A:A")};"{ask("Critério", "Presente")}")'
+        if formula == "CONT.VALORES":
+            result = f'=CONT.VALORES({ask("Intervalo a ser contado. Ex.: A2:A100", "A2:A100")})'
+        elif formula == "CONT.SES":
+            criteria_range1 = ask("Primeiro intervalo de critério. Ex.: A:A", "A:A")
+            criteria1 = ask("Primeiro critério. Ex.: Presente", "Presente")
+            criteria_range2 = ask("Segundo intervalo de critério. Ex.: B:B", "B:B")
+            criteria2 = ask("Segundo critério. Ex.: Manhã", "Manhã")
+            result = f'=CONT.SES({criteria_range1};"{criteria1}";{criteria_range2};"{criteria2}")'
+        else:
+            result = f'=CONT.SE({ask("Intervalo", "A:A")};"{ask("Critério", "Presente")}")'
     else:
         result = f'=SE({ask("Condição", "A2>=7")};"{ask("Resultado verdadeiro", "Aprovado")}";"{ask("Resultado falso", "Reprovado")}")'
     print("\nFÓRMULA PERSONALIZADA")
