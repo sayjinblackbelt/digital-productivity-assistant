@@ -21,6 +21,28 @@ def choose_option(prompt, options):
 def ask(prompt, default=""):
     return input("\n" + prompt + "\n> ").strip() or default
 
+def run_table_assistant():
+    goal = choose_option("O que você deseja fazer?", ["Criar uma nova tabela", "Organizar uma tabela existente", "Preparar dados para análise", "Escolher uma estrutura de tabela"])
+    tool = ask("Qual ferramenta você está utilizando?", "Excel")
+    print("\\nASSISTENTE DE TABELAS")
+    print("=" * 50)
+    print(f"Ferramenta: {tool}")
+    if goal == "Criar uma nova tabela":
+        subject = ask("Qual é o assunto principal da tabela? Ex.: controle de alunos")
+        fields = ask("Quais informações precisam ser registradas? Separe por vírgula. Ex.: Nome, Turma, Presença")
+        print("\\nEstrutura sugerida:")
+        print(f"Assunto: {subject}")
+        for i, field in enumerate(fields.split(","), 1):
+            if field.strip(): print(f"{i}. {field.strip()}")
+        print("Use uma linha para cabeçalhos e uma linha por registro.")
+    elif goal == "Organizar uma tabela existente":
+        print("Checklist: cabeçalhos claros, uma informação por coluna, sem células mescladas, sem linhas vazias e formatos padronizados.")
+    elif goal == "Preparar dados para análise":
+        print("Revise duplicados, padronize formatos, corrija valores inconsistentes e mantenha uma variável por coluna.")
+    else:
+        print("Modelo básico: uma linha de cabeçalho e uma linha por registro.")
+    print("\\nDica: planeje primeiro quais perguntas a tabela deverá responder.")
+
 def run_spreadsheet_organization():
     problem = choose_option("Qual problema você deseja resolver?", ["Dados duplicados", "Organizar colunas e cabeçalhos", "Padronizar datas", "Padronizar números", "Separar dados misturados", "Melhorar a estrutura geral"])
     tool = ask("Qual ferramenta você está utilizando?", "Excel")
@@ -172,6 +194,8 @@ def main():
         run_formula_correction()
     elif choice == "Organizar uma planilha":
         run_spreadsheet_organization()
+    elif choice == "Criar ou organizar uma tabela":
+        run_table_assistant()
     elif choice == "Interpretar dados":
         run_data_interpretation()
     else:
