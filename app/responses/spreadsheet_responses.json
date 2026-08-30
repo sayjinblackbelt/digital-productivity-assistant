@@ -41,6 +41,18 @@
     "SE": {
       "template": "=SE({condition};{true_result};{false_result})",
       "explanation": "Retorna um resultado quando uma condição é verdadeira e outro quando é falsa."
+    },
+    "SES": {
+      "template": "=SES({condition1};{result1};{condition2};{result2};VERDADEIRO;{default_result})",
+      "explanation": "Avalia múltiplas condições em sequência e retorna o resultado correspondente à primeira condição verdadeira."
+    },
+    "E": {
+      "template": "=E({condition1};{condition2})",
+      "explanation": "Retorna VERDADEIRO somente quando todas as condições forem verdadeiras."
+    },
+    "OU": {
+      "template": "=OU({condition1};{condition2})",
+      "explanation": "Retorna VERDADEIRO quando pelo menos uma condição for verdadeira."
     }
   }
 }
