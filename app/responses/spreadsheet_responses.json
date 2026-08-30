@@ -10,9 +10,17 @@
     }
   },
   "sum": {
+    "SOMA": {
+      "template": "=SOMA({range})",
+      "explanation": "Soma todos os valores de um intervalo."
+    },
     "SOMASE": {
       "template": "=SOMASE({criteria_range};{criteria};{sum_range})",
       "explanation": "Soma valores que atendem a um critério."
+    },
+    "SOMASES": {
+      "template": "=SOMASES({sum_range};{criteria_range1};{criteria1};{criteria_range2};{criteria2})",
+      "explanation": "Soma valores que atendem simultaneamente a múltiplos critérios."
     }
   },
   "count": {
