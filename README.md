@@ -311,7 +311,7 @@ Exemplos públicos devem utilizar dados fictícios ou anonimizados.
 
 ## 👨‍💻 Autor
 
-**Filipe Gimenes de Morais**
+**Filipe G Morais**
 
 Projeto autoral em desenvolvimento, inspirado por demandas reais de suporte tecnológico, educação digital e consultorias personalizadas.
 
@@ -353,3 +353,12 @@ Foi adicionada uma versão web estática para testes com educandos.
 Abra o arquivo `index.html` em um navegador ou publique o repositório usando GitHub Pages.
 
 A versão web é um protótipo de validação educacional e não coleta dados pessoais.
+
+---
+
+## Author
+
+**Filipe G Morais**
+
+GitHub: https://github.com/sayjinblackbelt  
+Repository: https://github.com/sayjinblackbelt/digital-productivity-assistant
