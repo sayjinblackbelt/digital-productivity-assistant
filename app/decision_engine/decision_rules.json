@@ -1,5 +1,5 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "categories": {
     "Criar uma fórmula": {
       "question": "Qual operação você deseja realizar?",
@@ -45,10 +45,12 @@
     "count": {
       "questions": [
         "O que deve ser contado?",
-        "Existe alguma condição?"
+        "Você deseja contar todas as células preenchidas ou apenas valores que atendem a uma ou mais condições?"
       ],
       "recommendations": [
-        "CONT.SE"
+        "CONT.VALORES",
+        "CONT.SE",
+        "CONT.SES"
       ]
     },
     "condition": {
