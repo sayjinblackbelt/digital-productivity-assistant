@@ -1,5 +1,5 @@
 {
-  "version": "0.4",
+  "version": "0.5",
   "categories": {
     "Criar uma fórmula": {
       "question": "Qual operação você deseja realizar?",
@@ -55,12 +55,15 @@
     },
     "condition": {
       "questions": [
-        "Qual condição deve ser testada?",
-        "Qual resultado deve aparecer quando a condição for verdadeira?",
-        "Qual resultado deve aparecer quando for falsa?"
+        "Qual condição ou resultado você deseja testar?",
+        "Você precisa avaliar uma única condição ou múltiplas condições?",
+        "Quando houver múltiplas condições, todas precisam ser verdadeiras ou basta uma?"
       ],
       "recommendations": [
-        "SE"
+        "SE",
+        "SES",
+        "E",
+        "OU"
       ]
     }
   }
