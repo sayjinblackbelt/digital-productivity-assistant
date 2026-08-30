@@ -335,3 +335,21 @@ Projeto autoral em desenvolvimento, inspirado por demandas reais de suporte tecn
 2. Melhorar profundidade dos módulos de texto e conteúdo.
 3. Adicionar uma camada de IA.
 4. Avaliar interface gráfica.
+
+
+## 🌐 Versão Web para testes
+
+Foi adicionada uma versão web estática para testes com educandos.
+
+- Interface responsiva para computador e celular.
+- 8 categorias principais do MVP.
+- Fluxos guiados por perguntas.
+- Geração de resultados básicos para fórmulas e interpretação de dados.
+- Botão para copiar resultados.
+- Canal de feedback via GitHub Issues.
+
+### Como testar localmente
+
+Abra o arquivo `index.html` em um navegador ou publique o repositório usando GitHub Pages.
+
+A versão web é um protótipo de validação educacional e não coleta dados pessoais.
