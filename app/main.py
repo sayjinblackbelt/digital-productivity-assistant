@@ -21,6 +21,23 @@ def choose_option(prompt, options):
 def ask(prompt, default=""):
     return input("\n" + prompt + "\n> ").strip() or default
 
+def run_spreadsheet_organization():
+    problem = choose_option("Qual problema você deseja resolver?", ["Dados duplicados", "Organizar colunas e cabeçalhos", "Padronizar datas", "Padronizar números", "Separar dados misturados", "Melhorar a estrutura geral"])
+    tool = ask("Qual ferramenta você está utilizando?", "Excel")
+    print("\nORIENTAÇÃO PRÁTICA")
+    print("=" * 50)
+    print(f"Ferramenta: {tool}")
+    guidance = {
+        "Dados duplicados": "Faça uma cópia dos dados, identifique a coluna única e use a remoção de duplicatas. Exemplo: =CONT.SE(A:A;A2)>1",
+        "Organizar colunas e cabeçalhos": "Use uma única linha de cabeçalho, nomes claros e uma informação por coluna. Evite células mescladas na base.",
+        "Padronizar datas": "Verifique se as datas são valores de data e escolha um formato único, como dd/mm/aaaa.",
+        "Padronizar números": "Verifique números armazenados como texto e padronize moeda, porcentagem e casas decimais.",
+        "Separar dados misturados": "Identifique o separador e use Texto para Colunas ou funções de divisão.",
+        "Melhorar a estrutura geral": "Checklist: cabeçalho único, uma informação por coluna, sem linhas vazias, formatos consistentes e duplicados revisados."
+    }
+    print(guidance[problem])
+    print("\nFaça uma cópia antes de alterações estruturais.")
+
 def run_data_interpretation():
     raw = ask("Informe valores separados por ponto e vírgula. Ex.: 10;15;20")
     values = []
@@ -33,8 +50,7 @@ def run_data_interpretation():
         print("Nenhum valor numérico válido foi informado.")
         return
     choice = choose_option("O que você deseja descobrir?", ["Maior valor", "Menor valor", "Média", "Comparar primeiro e último valor", "Resumo geral"])
-    maximum = max(values)
-    minimum = min(values)
+    maximum, minimum = max(values), min(values)
     average = sum(values) / len(values)
     print("\nRESULTADO DA ANÁLISE")
     print("=" * 50)
@@ -65,12 +81,7 @@ def run_formula_correction():
     formula = ask("Qual fórmula está apresentando problema?")
     error = ask("Qual erro aparece? Ex.: #N/D, #VALOR!, #REF!")
     expected = ask("Qual resultado você esperava obter?")
-    suggestions = {
-        "#N/D": "O valor procurado pode não existir ou os dados podem ter formatos diferentes.",
-        "#VALOR!": "Verifique argumentos e tipos de dados.",
-        "#REF!": "A fórmula pode apontar para uma referência removida.",
-        "#DIV/0!": "A fórmula está tentando dividir por zero ou por uma célula vazia."
-    }
+    suggestions = {"#N/D": "O valor procurado pode não existir ou os dados podem ter formatos diferentes.", "#VALOR!": "Verifique argumentos e tipos de dados.", "#REF!": "A fórmula pode apontar para uma referência removida.", "#DIV/0!": "A fórmula está tentando dividir por zero ou por uma célula vazia."}
     print("\nDIAGNÓSTICO INICIAL")
     print("=" * 50)
     print(f"Ferramenta: {tool}")
@@ -117,6 +128,8 @@ def main():
         run_formula_flow()
     elif choice == "Corrigir uma fórmula":
         run_formula_correction()
+    elif choice == "Organizar uma planilha":
+        run_spreadsheet_organization()
     elif choice == "Interpretar dados":
         run_data_interpretation()
     else:
