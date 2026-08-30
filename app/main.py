@@ -21,6 +21,35 @@ def choose_option(prompt, options):
 def ask(prompt, default=""):
     return input("\n" + prompt + "\n> ").strip() or default
 
+def run_content_creation():
+    goal = choose_option("O que você deseja criar?", ["Resposta profissional", "E-mail", "Mensagem curta", "Comunicado ou aviso", "Conteúdo para redes sociais"])
+    context = ask("Descreva a situação ou informe os pontos principais")
+    tone = choose_option("Qual tom você deseja?", ["Profissional", "Amigável", "Objetivo", "Formal"])
+    print("\nCRIAÇÃO DE RESPOSTAS E CONTEÚDO")
+    print("=" * 50)
+    if not context.strip():
+        print("Nenhuma informação foi informada.")
+        return
+    print(f"Tipo: {goal}")
+    print(f"Tom: {tone}")
+    print("\nEstrutura sugerida:")
+    if goal == "E-mail":
+        print("1. Saudação")
+        print("2. Contexto ou objetivo")
+        print("3. Informação principal ou solicitação")
+        print("4. Encerramento")
+    elif goal == "Mensagem curta":
+        print("Contexto → mensagem principal → ação esperada.")
+    elif goal == "Comunicado ou aviso":
+        print("Título → informação principal → data/prazo → orientação ou ação necessária.")
+    elif goal == "Conteúdo para redes sociais":
+        print("Gancho → conteúdo principal → chamada para ação.")
+    else:
+        print("Contexto → resposta principal → próximos passos.")
+    print("\nPontos informados pelo usuário:")
+    print(context)
+    print("\nObservação: a geração automática completa do texto será integrada em uma próxima camada de IA.")
+
 def run_text_improvement():
     goal = choose_option("O que você deseja fazer?", ["Corrigir ortografia e gramática", "Melhorar clareza e organização", "Tornar o texto mais profissional", "Resumir ou simplificar um texto"])
     text_input = ask("Cole ou escreva o texto que deseja analisar")
@@ -241,6 +270,8 @@ def main():
         run_document_formatting()
     elif choice == "Corrigir ou melhorar um texto":
         run_text_improvement()
+    elif choice == "Criar uma resposta ou conteúdo":
+        run_content_creation()
     else:
         print("\nEsta categoria está prevista para as próximas versões.")
 
