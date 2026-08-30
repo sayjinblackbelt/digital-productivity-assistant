@@ -134,8 +134,26 @@ def run_formula_flow():
             result = f'=CONT.SES({criteria_range1};"{criteria1}";{criteria_range2};"{criteria2}")'
         else:
             result = f'=CONT.SE({ask("Intervalo", "A:A")};"{ask("Critério", "Presente")}")'
+    elif operation == "condition":
+        if formula == "SES":
+            condition1 = ask("Primeira condição. Ex.: A2>=9", "A2>=9")
+            result1 = ask("Resultado da primeira condição", "Excelente")
+            condition2 = ask("Segunda condição. Ex.: A2>=7", "A2>=7")
+            result2 = ask("Resultado da segunda condição", "Aprovado")
+            default_result = ask("Resultado padrão", "Reprovado")
+            result = f'=SES({condition1};"{result1}";{condition2};"{result2}";VERDADEIRO;"{default_result}")'
+        elif formula == "E":
+            condition1 = ask("Primeira condição. Ex.: A2>=7", "A2>=7")
+            condition2 = ask("Segunda condição. Ex.: B2>=75", "B2>=75")
+            result = f'=E({condition1};{condition2})'
+        elif formula == "OU":
+            condition1 = ask("Primeira condição. Ex.: A2>=7", "A2>=7")
+            condition2 = ask("Segunda condição. Ex.: B2>=75", "B2>=75")
+            result = f'=OU({condition1};{condition2})'
+        else:
+            result = f'=SE({ask("Condição", "A2>=7")};"{ask("Resultado verdadeiro", "Aprovado")}";"{ask("Resultado falso", "Reprovado")}")'
     else:
-        result = f'=SE({ask("Condição", "A2>=7")};"{ask("Resultado verdadeiro", "Aprovado")}";"{ask("Resultado falso", "Reprovado")}")'
+        result = ""
     print("\nFÓRMULA PERSONALIZADA")
     print("=" * 50)
     print(result)
