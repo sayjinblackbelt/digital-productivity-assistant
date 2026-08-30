@@ -24,9 +24,17 @@
     }
   },
   "count": {
+    "CONT.VALORES": {
+      "template": "=CONT.VALORES({range})",
+      "explanation": "Conta quantas células preenchidas existem em um intervalo."
+    },
     "CONT.SE": {
       "template": "=CONT.SE({range};{criteria})",
       "explanation": "Conta células que atendem a um critério."
+    },
+    "CONT.SES": {
+      "template": "=CONT.SES({criteria_range1};{criteria1};{criteria_range2};{criteria2})",
+      "explanation": "Conta células ou registros que atendem simultaneamente a múltiplos critérios."
     }
   },
   "condition": {
