@@ -1,0 +1,2 @@
+# MVP CLI
+# No external dependencies required.
