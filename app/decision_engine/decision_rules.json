@@ -1,0 +1,54 @@
+{
+  "version": "0.1",
+  "categories": {
+    "Criar uma fórmula": {
+      "question": "Qual operação você deseja realizar?",
+      "options": {
+        "Procurar um valor": {
+          "next": "lookup"
+        },
+        "Somar valores": {
+          "next": "sum"
+        },
+        "Contar valores": {
+          "next": "count"
+        },
+        "Comparar ou testar uma condição": {
+          "next": "condition"
+        }
+      }
+    }
+  },
+  "flows": {
+    "lookup": {
+      "questions": [
+        "Qual valor você deseja procurar?",
+        "Em qual coluna ou intervalo estão os valores?",
+        "Qual informação você deseja retornar?"
+      ],
+      "recommendations": ["PROCX", "PROCV", "ÍNDICE + CORRESP"]
+    },
+    "sum": {
+      "questions": [
+        "Quais valores devem ser somados?",
+        "Existe alguma condição para realizar a soma?"
+      ],
+      "recommendations": ["SOMA", "SOMASE", "SOMASES"]
+    },
+    "count": {
+      "questions": [
+        "O que deve ser contado?",
+        "Existe alguma condição?"
+      ],
+      "recommendations": ["CONT.VALORES", "CONT.SE", "CONT.SES"]
+    },
+    "condition": {
+      "questions": [
+        "Qual condição deve ser testada?",
+        "Qual resultado deve aparecer quando a condição for verdadeira?",
+        "Qual resultado deve aparecer quando for falsa?"
+      ],
+      "recommendations": ["SE", "SES", "E", "OU"]
+    }
+  }
+}
