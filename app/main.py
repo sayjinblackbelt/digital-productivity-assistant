@@ -47,6 +47,34 @@ def build_formula(operation, formula):
         false_value = ask("Resultado falso", "Reprovado")
         return f'=SE({condition};"{true_value}";"{false_value}")'
 
+def run_formula_correction():
+    tool = ask("Qual ferramenta você está utilizando? Ex.: Excel")
+    formula = ask("Qual fórmula está apresentando problema?")
+    error = ask("Qual erro aparece? Ex.: #N/D, #VALOR!, #REF!")
+    expected = ask("Qual resultado você esperava obter?")
+    suggestions = {
+        "#N/D": "O valor procurado pode não existir no intervalo ou os dados podem ter diferenças de formato, espaços ou tipos.",
+        "#VALOR!": "Verifique se os argumentos da fórmula usam intervalos e tipos de dados compatíveis.",
+        "#REF!": "A fórmula pode apontar para uma célula, coluna ou intervalo removido.",
+        "#DIV/0!": "A fórmula está tentando dividir por zero ou por uma célula vazia."
+    }
+    key = error.upper().replace(" ", "")
+    print("\n" + "=" * 50)
+    print("DIAGNÓSTICO INICIAL")
+    print("=" * 50)
+    print(f"Ferramenta: {tool}")
+    print(f"Erro informado: {error}")
+    print(f"Resultado esperado: {expected}")
+    print("\nPossível causa:")
+    print(suggestions.get(key, "Erro não reconhecido pelo diagnóstico inicial. Verifique fórmula, intervalos e dados."))
+    print("\nPróximos passos sugeridos:")
+    print("1. Confirme se os intervalos existem.")
+    print("2. Verifique espaços extras e formatos diferentes nos dados.")
+    print("3. Compare a fórmula com o resultado esperado.")
+    print("4. Teste a fórmula com um exemplo simplificado.")
+    print("\nFórmula informada:")
+    print(formula)
+
 def run_formula_flow():
     rules = load_json("decision_engine/decision_rules.json")
     responses = load_json("responses/spreadsheet_responses.json")
@@ -77,6 +105,8 @@ def main():
     choice = choose_option("Olá! O que você deseja resolver?", options)
     if choice == "Criar uma fórmula":
         run_formula_flow()
+    elif choice == "Corrigir uma fórmula":
+        run_formula_correction()
     else:
         print("\nEsta categoria está prevista para as próximas versões.")
 
