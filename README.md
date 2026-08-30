@@ -314,3 +314,24 @@ Exemplos públicos devem utilizar dados fictícios ou anonimizados.
 **Filipe Gimenes de Morais**
 
 Projeto autoral em desenvolvimento, inspirado por demandas reais de suporte tecnológico, educação digital e consultorias personalizadas.
+
+
+## MVP Status
+
+### Funcional
+- Criar fórmulas: PROCX, PROCV, SOMA, SOMASE, SOMASES, CONT.VALORES, CONT.SE, CONT.SES, SE, SES, E e OU.
+- Correção inicial de fórmulas.
+- Organização de planilhas.
+- Criação e organização de tabelas.
+- Interpretação básica de dados.
+- Formatação de documentos.
+
+### Estrutura inicial
+- Melhoria de textos: atualmente fornece orientação; reescrita automática é uma evolução futura.
+- Criação de respostas e conteúdo: atualmente fornece estrutura; geração automática é uma evolução futura.
+
+## Próximos passos
+1. Testes de cenários reais.
+2. Melhorar profundidade dos módulos de texto e conteúdo.
+3. Adicionar uma camada de IA.
+4. Avaliar interface gráfica.
