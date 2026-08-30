@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "categories": {
     "Criar uma fórmula": {
       "question": "Qual operação você deseja realizar?",
@@ -26,21 +26,28 @@
         "Em qual coluna ou intervalo estão os valores?",
         "Qual informação você deseja retornar?"
       ],
-      "recommendations": ["PROCX", "PROCV", "ÍNDICE + CORRESP"]
+      "recommendations": [
+        "PROCX",
+        "PROCV"
+      ]
     },
     "sum": {
       "questions": [
         "Quais valores devem ser somados?",
         "Existe alguma condição para realizar a soma?"
       ],
-      "recommendations": ["SOMA", "SOMASE", "SOMASES"]
+      "recommendations": [
+        "SOMASE"
+      ]
     },
     "count": {
       "questions": [
         "O que deve ser contado?",
         "Existe alguma condição?"
       ],
-      "recommendations": ["CONT.VALORES", "CONT.SE", "CONT.SES"]
+      "recommendations": [
+        "CONT.SE"
+      ]
     },
     "condition": {
       "questions": [
@@ -48,7 +55,9 @@
         "Qual resultado deve aparecer quando a condição for verdadeira?",
         "Qual resultado deve aparecer quando for falsa?"
       ],
-      "recommendations": ["SE", "SES", "E", "OU"]
+      "recommendations": [
+        "SE"
+      ]
     }
   }
 }
