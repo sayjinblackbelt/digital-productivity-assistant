@@ -242,8 +242,6 @@ def run_formula_flow():
             result = f'=OU({condition1};{condition2})'
         else:
             result = f'=SE({ask("Condição", "A2>=7")};"{ask("Resultado verdadeiro", "Aprovado")}";"{ask("Resultado falso", "Reprovado")}")'
-    else:
-        result = ""
     print("\nFÓRMULA PERSONALIZADA")
     print("=" * 50)
     print(result)
