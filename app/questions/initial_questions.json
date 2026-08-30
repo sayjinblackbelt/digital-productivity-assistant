@@ -1,0 +1,44 @@
+{
+  "version": "0.1",
+  "principle": "Ask only for information that is necessary to solve the user's problem.",
+  "questions": [
+    {
+      "id": "problem_type",
+      "question": "O que você deseja resolver?",
+      "type": "selection",
+      "options": [
+        "Criar uma fórmula",
+        "Corrigir uma fórmula",
+        "Organizar uma planilha",
+        "Criar ou organizar uma tabela",
+        "Interpretar dados",
+        "Formatar um documento",
+        "Corrigir ou melhorar um texto",
+        "Criar uma resposta ou conteúdo",
+        "Outro problema"
+      ]
+    },
+    {
+      "id": "tool",
+      "question": "Qual ferramenta você está utilizando?",
+      "type": "selection"
+    },
+    {
+      "id": "attempted_solution",
+      "question": "O que você já tentou fazer?",
+      "type": "text",
+      "optional": true
+    },
+    {
+      "id": "expected_result",
+      "question": "Qual resultado você espera?",
+      "type": "text"
+    },
+    {
+      "id": "example",
+      "question": "Você pode fornecer um exemplo?",
+      "type": "text_or_file",
+      "optional": true
+    }
+  ]
+}
