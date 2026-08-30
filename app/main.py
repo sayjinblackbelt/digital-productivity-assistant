@@ -21,6 +21,26 @@ def choose_option(prompt, options):
 def ask(prompt, default=""):
     return input("\n" + prompt + "\n> ").strip() or default
 
+def run_text_improvement():
+    goal = choose_option("O que você deseja fazer?", ["Corrigir ortografia e gramática", "Melhorar clareza e organização", "Tornar o texto mais profissional", "Resumir ou simplificar um texto"])
+    text_input = ask("Cole ou escreva o texto que deseja analisar")
+    print("\nANÁLISE E MELHORIA DE TEXTO")
+    print("=" * 50)
+    if not text_input.strip():
+        print("Nenhum texto foi informado.")
+        return
+    print(f"Objetivo selecionado: {goal}")
+    print("Texto recebido com sucesso.")
+    if goal == "Corrigir ortografia e gramática":
+        print("Orientação: revise ortografia, concordância, pontuação e repetição de palavras.")
+    elif goal == "Melhorar clareza e organização":
+        print("Orientação: prefira frases diretas, organize as ideias em sequência e elimine informações redundantes.")
+    elif goal == "Tornar o texto mais profissional":
+        print("Orientação: utilize linguagem objetiva, evite informalidade excessiva e destaque informações importantes.")
+    else:
+        print("Orientação: mantenha as ideias centrais e reduza detalhes que não contribuem para o objetivo principal.")
+    print("\nObservação: a reescrita automática completa será integrada em uma próxima camada do assistente.")
+
 def run_document_formatting():
     goal = choose_option("O que você deseja fazer?", ["Formatar um documento existente", "Criar uma estrutura de documento", "Melhorar a apresentação de um documento"])
     tool = ask("Qual ferramenta você está utilizando?", "Word")
@@ -219,6 +239,8 @@ def main():
         run_data_interpretation()
     elif choice == "Formatar um documento":
         run_document_formatting()
+    elif choice == "Corrigir ou melhorar um texto":
+        run_text_improvement()
     else:
         print("\nEsta categoria está prevista para as próximas versões.")
 
