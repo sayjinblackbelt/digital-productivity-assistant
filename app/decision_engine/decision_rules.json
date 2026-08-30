@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "categories": {
     "Criar uma fórmula": {
       "question": "Qual operação você deseja realizar?",
@@ -34,10 +34,12 @@
     "sum": {
       "questions": [
         "Quais valores devem ser somados?",
-        "Existe alguma condição para realizar a soma?"
+        "Você precisa somar todos os valores ou apenas valores que atendem a uma ou mais condições?"
       ],
       "recommendations": [
-        "SOMASE"
+        "SOMA",
+        "SOMASE",
+        "SOMASES"
       ]
     },
     "count": {
