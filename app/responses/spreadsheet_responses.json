@@ -1,0 +1,30 @@
+{
+  "lookup": {
+    "PROCX": {
+      "template": "=PROCX({search_value};{search_range};{return_range};\"Não encontrado\")",
+      "explanation": "Procura um valor em um intervalo e retorna a informação correspondente."
+    },
+    "PROCV": {
+      "template": "=PROCV({search_value};{table_range};{column_index};FALSO)",
+      "explanation": "Procura um valor na primeira coluna de um intervalo e retorna dados de outra coluna."
+    }
+  },
+  "sum": {
+    "SOMASE": {
+      "template": "=SOMASE({criteria_range};{criteria};{sum_range})",
+      "explanation": "Soma valores que atendem a um critério."
+    }
+  },
+  "count": {
+    "CONT.SE": {
+      "template": "=CONT.SE({range};{criteria})",
+      "explanation": "Conta células que atendem a um critério."
+    }
+  },
+  "condition": {
+    "SE": {
+      "template": "=SE({condition};{true_result};{false_result})",
+      "explanation": "Retorna um resultado quando uma condição é verdadeira e outro quando é falsa."
+    }
+  }
+}
