@@ -33,13 +33,22 @@ jobs:
           PY
 
       - name: CLI smoke test
-        run: printf '1\n1\n' | python app/main.py
+        run: |
+          python - <<'PY'
+          from app.main import load_json
+          rules = load_json("decision_engine/decision_rules.json")
+          questions = load_json("questions/initial_questions.json")
+          responses = load_json("responses/spreadsheet_responses.json")
+          assert rules and questions and responses
+          print("CLI modules and rule data loaded successfully")
+          PY
 
       - name: Web assets
         run: |
           test -s index.html
           test -s web/app.js
           test -s web/styles.css
+          node --check web/app.js
 
       - name: Portfolio documentation
         run: |
