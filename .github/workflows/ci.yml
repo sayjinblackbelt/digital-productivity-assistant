@@ -33,7 +33,7 @@ jobs:
           PY
 
       - name: CLI smoke test
-        run: python app/main.py --help
+        run: printf '1\n1\n' | python app/main.py
 
       - name: Web assets
         run: |
