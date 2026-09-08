@@ -364,3 +364,5 @@ GitHub: https://github.com/sayjinblackbelt
 Repository: https://github.com/sayjinblackbelt/digital-productivity-assistant
 
 <!-- CI trigger: portfolio standardization -->
+
+<!-- CI retest: deterministic CLI smoke test -->
