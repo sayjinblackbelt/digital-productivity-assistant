@@ -111,6 +111,10 @@ V5 — Specialized conversational assistant
 
 ## 👨‍💻 Author
 
-**Filipe Gimenes de Morais**
+**Filipe G Morais**
 
 An original project inspired by real demands in technology support, digital education, and personalized consulting.
+
+
+GitHub: https://github.com/sayjinblackbelt  
+Repository: https://github.com/sayjinblackbelt/digital-productivity-assistant
