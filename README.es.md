@@ -89,6 +89,10 @@ V5 — Asistente conversacional especializado
 
 ## 👨‍💻 Autor
 
-**Filipe Gimenes de Morais**
+**Filipe G Morais**
 
 Proyecto autoral inspirado en demandas reales de soporte tecnológico, educación digital y consultoría personalizada.
+
+
+GitHub: https://github.com/sayjinblackbelt  
+Repositorio: https://github.com/sayjinblackbelt/digital-productivity-assistant
