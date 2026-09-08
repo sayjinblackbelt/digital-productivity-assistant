@@ -362,3 +362,5 @@ A versão web é um protótipo de validação educacional e não coleta dados pe
 
 GitHub: https://github.com/sayjinblackbelt  
 Repository: https://github.com/sayjinblackbelt/digital-productivity-assistant
+
+<!-- CI trigger: portfolio standardization -->
